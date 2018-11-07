@@ -31,6 +31,8 @@ class CNNLayerVisualization():
         if not os.path.exists('../generated'):
             os.makedirs('../generated')
 
+        cv2.imwrite('../generated/created_image.jpg', self.created_image)
+
     def hook_layer(self):
         def hook_function(module, grad_in, grad_out):
             # Gets the conv output of the selected filter (from selected layer)
@@ -122,7 +124,7 @@ if __name__ == '__main__':
     layer_vis = CNNLayerVisualization(pretrained_model, cnn_layer, filter_pos)
 
     # Layer visualization with pytorch hooks
-    layer_vis.visualise_layer_with_hooks()
+    # layer_vis.visualise_layer_with_hooks()
 
     # Layer visualization without pytorch hooks
-    # layer_vis.visualise_layer_without_hooks()
+    layer_vis.visualise_layer_without_hooks()
